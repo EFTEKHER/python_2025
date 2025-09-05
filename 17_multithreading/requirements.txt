@@ -1,0 +1,7 @@
+seaborn
+flask
+memory-profiler
+streamlit
+memory_profiler
+scikit-learn
+bs4
