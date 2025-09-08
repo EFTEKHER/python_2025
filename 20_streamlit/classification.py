@@ -370,6 +370,6 @@ with col2:
 # Footer
 st.markdown("---")
 st.markdown("<div style='text-align: center; color: #00e6ff;'>", unsafe_allow_html=True)
-st.markdown("### 🌌 Quantum Machine Learning Interface v2.0")
+st.markdown("### 🌌 Quantum Machine Learning Interface v2.0 by Eftekher Ali Efte")
 st.markdown("### ⚡ Powered by Streamlit & Scikit-Learn")
 st.markdown("</div>", unsafe_allow_html=True)
