@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+   <div class="min-h-screen bg-gradient-to-r from-purple-900 via-blue-900 to-black flex flex-col items-center justify-center text-white">
+    <h1 class="text-5xl font-bold mb-6">Results Page</h1>
+    <form method="POST" action="/result">
+        <div class="mb-4">
+          <label class="block text-sm font-bold mb-2" for="marks">Enter your subject name:</label>
+          <input
+            class="w-full px-3 py-2 rounded-lg text-black"
+            type="text"
+            id="subject_name"
+            name="subject_name"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-bold mb-2" for="marks">Enter your mark:</label>
+          <input
+            class="w-full px-3 py-2 rounded-lg text-black"
+            type="number"
+            id="marks"
+            name="marks"
+            required
+          />
+        </div>
+        <button
+          class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+      {% if results %}
+<div class="mt-8 p-6 bg-white bg-opacity-20 rounded-lg shadow-lg">
+       <table border="1" class="table-auto bg-white bg-opacity-20 text-white">
+  <tr>
+    <th class="border px-4 py-2">Subject</th>
+    <th class="border px-4 py-2">Marks</th>
+    <th class="border px-4 py-2">Average</th>
+  </tr>
+  {% for subject, marks in results.items() %}
+    <tr>
+      <td class="border px-4 py-2">{{ subject }}</td>
+      <td class="border px-4 py-2">{{ marks }}</td>
+      {% if loop.first %}
+        <td class="border px-4 py-2" rowspan="{{ results|length }}">
+          {{ (results.values()|sum) / (results|length) }}
+        </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+  <tr>
+    <td class="border px-4 py-2 font-bold">Total</td>
+    <td class="border px-4 py-2 font-bold" colspan="2">{{ results.values()|sum }}</td>
+  </tr>
+</table>
+  
+    </div>
+
+    <div class="mt-4 p-6 bg-white bg-opacity-20 rounded-lg shadow-lg text-center">
+    <h2 class="text-2xl font-bold">Overall Average: {{ (results.values()|sum) / (results|length) }}</h2>
+    <h2 class="text-2xl font-bold">{{ grade }}</h2>
+  </div>
+      {%endif%}
+    
+</body>
+</html>
