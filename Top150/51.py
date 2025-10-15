@@ -1,0 +1,15 @@
+from typing import List
+
+class Solution:
+    def triangularSum(self, nums: List[int]) -> int:
+        n=len(nums)
+        while n>1:
+            for i in range(n-1):
+                nums[i]=(nums[i]+nums[i+1])
+                
+            n-=1
+        return nums[0]
+if __name__=="__main__":
+    s=Solution()   
+    print(s.triangularSum([1,2,3,4,5])) 
+            
